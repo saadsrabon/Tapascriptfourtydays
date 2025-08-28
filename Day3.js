@@ -13,8 +13,10 @@ console.log(numberToCheck, NumberType);
 // Let's check if you are eligible to get a driving license. The eligibility to get a driving licence is 18 years.
 
 // - [ ] Manage `age` as a variable.
+let age = 24;
 // - [ ] Check if the age is elligible for a driving license and print it on the console accordingly.
-
+let Iseligable = age >= 18 ? true : false ;
+console.log(Iseligable);
 // ## 3. Calculate CTC with a Bonus
 // Let's calculate how much you earn from your office.
 
