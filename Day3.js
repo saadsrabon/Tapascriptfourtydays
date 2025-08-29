@@ -19,20 +19,36 @@ let Iseligable = age >= 18 ? true : false ;
 console.log(Iseligable);
 // ## 3. Calculate CTC with a Bonus
 // Let's calculate how much you earn from your office.
-
+const monthlySalary = 12300;
+const annualSalary = monthlySalary * 12;
+const bonus = annualSalary * 0.2;
+const ctc = annualSalary + bonus;
+// - [ ] You get 12,300 rupees as your monthly salary.
+console.log(monthlySalary);
+// - [ ] You get a 20% bonus on your annual salary.
+console.log(bonus);
+// - [ ] How much money do you make per annum as a CTC?
+console.log(ctc);
 // - [ ] You get 12,300 rupees as your monthly salary.
 // - [ ] You get a 20% bonus on your annual salary.
 // - [ ] How much money do you make per annum as a CTC?
 
 // ## 4. Write a program for the Traffic Light Simulation.
 // Red Light... Green Light... Let's Play!
-
+let  color = "RED";
+const print = color === "Red" ? "Stop" : "GO";
+console.log(print);
 // - [ ] Create a `color` variable.
 // - [ ] Based on the color variable's value print in the console if a traveller needs to STOP or GO. The Red color is for STOP and the Green color is for GO.
 
 // ## 5. Create an Electricity Bill Calculator
 // Let's calculate how much you pay for electricity bills per month and annually.
+let units  = 150;
+let totalConsume  = 150 * 12 *150 ;
+let discount = totalConsume * 0.2
 
+let  bill = totalConsume - discount ;
+console.log( "Bill" , bill)
 // - [ ] Create a `units` variable. Based on this value you will calculate the total electricity bill for a months.
 // - [ ] If each day you consume the `units` and each unit cost 150 rupees, how much will you be charged per month?
 // - [ ] If there is a 20% discount on the annual payment, how much will you be charged for an annual payment?
