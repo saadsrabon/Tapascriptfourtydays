@@ -4,9 +4,15 @@
 
 // 1. Write a Function to Convert Celsius to Fahrenheit
 // Create a function celsiusToFahrenheit(celsius) that converts a temperature from Celsius to Fahrenheit. Formula: (Celsius * 9/5) + 32 = Fahrenheit
+function  celsiusToFahrenheit(celsius) {
+    return   (celsius * 9/5) + 32
+}
 
 // 2. Create a Function to Find the Maximum of Two Numbers
 // Write a function findMax(num1, num2) that returns the larger of the two numbers. It should work for negative numbers as well.
+ function findMax(num1, num2){
+    return num1 > num2 ? num1 : num2;
+ }
 
 // 3. Function to Check if a String is a Palindrome
 // Create a function isPalindrome(str) that checks if a given string is a palindrome (reads the same forward and backward). You can not use any string function that we have not learned in the series so far.
@@ -22,10 +28,19 @@
 
 // 7. Use an IIFE to Print “Hello, JavaScript!”
 // Write an IIFE that prints "Hello, JavaScript!" to the console. Here the Second word must be supplied using paramneter and argument.
+(
+    (hello)=>console.log(hello)
+)("hello")
 
 // 8. Create a Simple Callback Function
 // Write a function greet(name, callback), where callback prints a message using the name parameter.
+function greet(name, callback){
+    return  callback(name)
+}
 
+console.log(greet("saad",()=>{
+    console.log("saad")
+}))
 // 9. Create Call Stack Execution Diagram for this flow
 // function f1() {}
 // function f2() {
