@@ -50,3 +50,52 @@ console.log(name,city);
 
 const avgGrade = student.avgGrade()
 console.log(avgGrade)
+
+
+const coder={
+    name:"saad",
+    stack:"MERN",
+
+}
+
+console.log(Object.keys(coder))
+// console.log(Object.entries(coder).map(item=> console.log(item[key,value])))
+
+// For in
+
+for(let key in coder){
+    console.log(key,coder[key])
+}
+
+if("name" in coder){
+    console.log("hello")
+}
+
+let res=Object.hasOwn("name",coder)
+console.log(res)
+
+const person1 = { name: "John" };
+const newPerson = person1;
+newPerson.name = "Doe";
+console.log(person1.name);// it will print Doe as it is hold same refference
+const users = [
+  {
+      'name': 'Alex',
+      'address': '15th Park Avenue',
+      'age': 43
+  },
+  {
+      'name': 'Bob',
+      'address': 'Canada',
+      'age': 53
+  },
+  {
+      'name': 'Carl',
+      'address': 'Bangalore',
+      'age': 26
+  }
+];
+
+for(let i=0; i<users.length; i++){
+    console.log({name:userName,address,age}=users[i])
+}
