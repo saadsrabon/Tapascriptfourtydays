@@ -127,10 +127,15 @@ const debounce =(callback,delay)=>{
      let timeout;
      return function (...args){
         clearTimeout(timeout);
-        setTimeout(()=>{
-           timeout = callback(...args)
+         timeout =setTimeout(()=>{
+           callback(...args)
         },delay)
      }
 }
 
 document.getElementById('btn').addEventListener('click',debounce(func,3000))
+const log = debounce((msg) => console.log(msg), 500);
+
+log("Hello");
+log("World");
+// Only "World" will be logged after 500ms
