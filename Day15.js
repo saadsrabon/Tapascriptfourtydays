@@ -87,10 +87,33 @@ const myarr3 =[7,5,6]
 
 console.log(fillArray.includes(7));
 // ✅ The indexOf() array method
+//Index of method helps to find an elements index position
+console.log(fillArray.indexOf(7))
 // ✅ The reverse() array method
+//Reverse method helps to reverse an array
+const numberArrr =[4,5,4,6]
+console.log(numberArrr.reverse());
 // ✅ The sort() array method
+
+// the sort method help  to sort anything
+
+console.log(numberArrr.sort())
 // ✅ The splice() array method
+numberArrr.splice(1,2)  // it can remove and add element from given index to delete count like how many items
+
 // ✅ The at() Method
-// ✅ The copyWithin() Method
+const arrat = [10, 20, 30, 40, 50];
+
+console.log(arrat.at(-1));  // 50 (last element)
+console.log(arrat.at(-3));  // 30
+
+// ✅ The copyWithin() Method  // Copy within helps you too copy any index where you want to copy and second argument show what to copy 
+const arrwithin = [1, 2, 3, 4, 5];
+arrwithin.copyWithin(0,3) //[copy 4,5] to index 0
+// Original:     [1, 2, 3, 4, 5]
+// Copy [4,5] →  [4, 5, 3, 4, 5]
+
+
+
 // ✅ The flat() Method
 // ✅ Grouping elements in Array
