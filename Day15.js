@@ -57,14 +57,31 @@ const myarr = [7,5,6]
 const myarr2 = [8,8,8]
 const myarr3 =[7,5,6]
 
- const concatedArray = myarr.concat(myarr2,myarr3);
+ const concatedArray = myarr.concat(myarr2,myarr3); // it doesnot muted anything
  console.log(concatedArray);
+ console.log(myarr)
   
 // ✅ The join() array method
  
-// We can use joun
+// We can use join to join something on the array with some separator
+  const students = [{name:"saad"},{name:"Akib"},{name:"Rakib"}]
+   const item = students.map(item=> item.name).join()
+   console.log(item)
+ const joinMethod = myarr.join(); // and its conver it to array and show it as example
+ console.log("Join method" ,joinMethod)
 
 // ✅ The fill() array method
+  const fillArray =[4,5,6,7,9,10];
+  fillArray.fill(5,2);
+  console.log(fillArray)
+// 
+// ⚠️ Important Notes:
+
+// The fill() method modifies the original array.
+
+// It's a mutable operation (doesn’t return a new array).
+
+// Works only on existing array slots (not useful for sparse arrays unless initialized).
 // ✅ The includes() array method
 // ✅ The indexOf() array method
 // ✅ The reverse() array method

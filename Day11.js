@@ -25,11 +25,24 @@ console.log(testClosure()());
 
 // console.log(testClosure()());
 // 3. Create a button dynamically and attach a click event handler using a closure. The handler should count and log how many times the button was clicked.
-// let click=0
-// document.getElementById('btn').addEventListener('click',()=>{
-//     click++
-//     console.log(click)
-// })
+// Create the button dynamically
+const button = document.createElement('button');
+button.textContent = 'Click Me';
+document.body.appendChild(button);
+
+// Use a closure to maintain the click count
+function createClickHandler() {
+    let clickCount = 0;
+
+    return function() {
+        clickCount++;
+        console.log(`Button clicked ${clickCount} times`);
+    };
+}
+
+// Attach the handler to the button
+const handleClick = createClickHandler();
+button.addEventListener('click', handleClick);
 
 
 // 4. Write a function createMultiplier(multiplier) that returns another function to multiply numbers.
