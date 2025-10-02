@@ -23,6 +23,8 @@ const foodName =["Apple","Mango","IceCreame","Falooda","Aromatic","Birany","Ramn
 const [,,,,,ffood] =foodName;
 console.log(ffood)
 //  T-008: Take out the last 8 food items from the above array using the Array destructuring. Hint: rest parameter.
+const [,,,...items] =foodName;
+console.log(items);
 //  T-009: Clone an Array(Shallow cloning)
 //  T-010: Empty an array using its length property
 //  T-011: Create an array of 10 elements(number 1 to 10). Resize the array to length 6 once you find the number 5 in that array. Hint: Use for-loop.
