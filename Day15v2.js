@@ -24,10 +24,25 @@ const [,,,,,ffood] =foodName;
 console.log(ffood)
 //  T-008: Take out the last 8 food items from the above array using the Array destructuring. Hint: rest parameter.
 const [,,,...items] =foodName;
-console.log(items);
+// console.log(items);
 //  T-009: Clone an Array(Shallow cloning)
+const mainArray = [{name:"hello"}];
+const shallowClone = [...mainArray]
 //  T-010: Empty an array using its length property
+const emtArray = [4,5];
+emtArray.length=0;
+console.log(emtArray)
 //  T-011: Create an array of 10 elements(number 1 to 10). Resize the array to length 6 once you find the number 5 in that array. Hint: Use for-loop.
+const tenElements = [1,2,3,4,5,6,7,8,9,10];
+console.log(tenElements);
+for(let i = 0; i<tenElements.length; i++)
+{
+    if(tenElements[i]==5)
+        {
+            tenElements.length=6;
+        }
+}
+console.log(tenElements);
 //  T-012: Create an Array of 10 elements. Use the splice() method to empty the array.
 //  T-013: Create an Array of 10 elements. You can empty the array in multiple ways: using the length property, using the pop() method, using the shift() method, setting the array with [], or the splice() method. Which among these methods are most efficient and why?
 //  T-014: What happens when you concatenate two empty arrays?
