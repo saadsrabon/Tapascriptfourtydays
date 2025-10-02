@@ -115,5 +115,5 @@ arrwithin.copyWithin(0,3) //[copy 4,5] to index 0
 
 
 
-// ✅ The flat() Method
-// ✅ Grouping elements in Array
+// ✅ The flat() Method  // flats nested array
+// ✅ Grouping elements in Array // we can use reduce or Objecet group by
