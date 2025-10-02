@@ -72,8 +72,8 @@ const myarr3 =[7,5,6]
 
 // ✅ The fill() array method
   const fillArray =[4,5,6,7,9,10];
-  fillArray.fill(5,2);
-  console.log(fillArray)
+  // fillArray.fill(5,2);
+  // console.log(fillArray)
 // 
 // ⚠️ Important Notes:
 
@@ -83,6 +83,9 @@ const myarr3 =[7,5,6]
 
 // Works only on existing array slots (not useful for sparse arrays unless initialized).
 // ✅ The includes() array method
+// Includes method to check if the item  exist on the array
+
+console.log(fillArray.includes(7));
 // ✅ The indexOf() array method
 // ✅ The reverse() array method
 // ✅ The sort() array method
