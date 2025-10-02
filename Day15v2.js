@@ -31,10 +31,10 @@ const shallowClone = [...mainArray]
 //  T-010: Empty an array using its length property
 const emtArray = [4,5];
 emtArray.length=0;
-console.log(emtArray)
+// console.log(emtArray)
 //  T-011: Create an array of 10 elements(number 1 to 10). Resize the array to length 6 once you find the number 5 in that array. Hint: Use for-loop.
 const tenElements = [1,2,3,4,5,6,7,8,9,10];
-console.log(tenElements);
+// console.log(tenElements);
 for(let i = 0; i<tenElements.length; i++)
 {
     if(tenElements[i]==5)
@@ -42,13 +42,121 @@ for(let i = 0; i<tenElements.length; i++)
             tenElements.length=6;
         }
 }
-console.log(tenElements);
+// console.log(tenElements);
 //  T-012: Create an Array of 10 elements. Use the splice() method to empty the array.
+tenElements.splice(0);
+
+// console.log(tenElements)
+
 //  T-013: Create an Array of 10 elements. You can empty the array in multiple ways: using the length property, using the pop() method, using the shift() method, setting the array with [], or the splice() method. Which among these methods are most efficient and why?
+//arr.length as it is fast and also intacts the referrence
 //  T-014: What happens when you concatenate two empty arrays?
+// console.log([]+[]);
+// 📌 1. Basic Coercion Types
+// Expression	Result	Why?
+// true + 1	2	true → 1
+// false + 1	1	false → 0
+// null + 1	1	null → 0
+// undefined + 1	NaN	undefined → NaN
+// [] + []	""	[].toString() = ""
+// [] + {}	"[object Object]"	[] → "", {} → "[object Object]"
+// {} + []	0	Block {}, then +[] → 0
+// [] - 1	-1	[] → 0
+// "5" - 1	4	"5" becomes number 5
+// "5" + 1	"51"	+ triggers string concatenation
+// "5" * "2"	10	"5" and "2" both become numbers
+// 📌 2. Boolean Conversion
+// Value	Boolean Equivalent
+// "" (empty string)	false
+// " " (space)	true
+// 0	false
+// 1, -1, 3.14	true
+// null	false
+// undefined	false
+// NaN	false
+// {}, [] (even empty)	true
+// 📌 3. Object to Primitive Conversion
+
+// JavaScript uses this order when converting objects:
+
+// valueOf()
+
+// toString()
+
+// const obj = {
+//   valueOf() { return 42; },
+//   toString() { return "Hello"; }
+// };
+
+// console.log(obj + 1); // 43 (uses valueOf)
+
+
+// If valueOf() doesn’t return a primitive, it falls back to toString().
+
+// 📌 4. Unary Plus Operator +
+
+// Converts values to number:
+
+// Expression	Result
+// +""	0
+// +"123"	123
+// +"abc"	NaN
+// +true	1
+// +false	0
+// +null	0
+// +undefined	NaN
+// 📌 5. Weird but True: Fun Examples
+// console.log([] == false);      // true  → [] → "" → false
+// console.log(null == undefined); // true → special case
+// console.log([] == ![]);        // true  → [] == false
+// console.log({} + []);          // 0     → block +[] = 0
+// console.log([] + {});          // "[object Object]"
+// console.log({} + {});          // "[object Object][object Object]"
+
+// 🧪 How to Test Type Coercion Easily
+
+// Use this in your console:
+
+// const test = (val) => {
+//   console.log(`Value: ${val}, Type: ${typeof val}, ToNumber: ${+val}, ToString: "${val + ""}", ToBoolean: ${!!val}`);
+// };
+
+// test([]);       // empty array
+// test({});       // empty object
+// test("0");
+// test(0);
+// test(null);
+// test(undefined);
+// test(NaN);
+
+// ✅ TL;DR Tips:
+
+// + is either math or string concat — watch for strings!
+
+// == uses type coercion, === doesn’t.
+
+// Objects and arrays usually become strings like [object Object] or "".
+
+// [] is truthy but == false (weird, right?)
 //  T-015: How can you check if a value is partially matching with any of the elements of an Array?
+//I can use some  - If any match
+//I can use filter -  to get all match
+//i can use includes and ,startWith for partial match
+
+const fruits = ["apple", "banana", "grapefruit", "mango"];
+console.log(fruits.some(item=> item.includes("app")));
+
 //  T-016: What is the difference between the slice() and splice() methods?
+//slice to cut a portion
+//splice cut,add ,remove
+
 //  T-017: Create an Array of alphanumeric strings. Sort the elements in both ascending and descending orders. You must be doing this in an immutable way such that the source array never gets modified.
+const toSortArr =["1","2","3"];
+const sortedArray =[...toSortArr].sort((a,b)=>a.localeCompare(b))
+const sortedArray2 =[...toSortArr].sort((a,b)=>b.localeCompare(a))
+console.log(toSortArr);
+console.log(sortedArray);
+console.log(sortedArray2)
 //  T-018: Can you give examples of sparse and dense arrays?
 //  T-019: Give a practical usages of the .fill() method
 //  T-020: How to convert an array to a string?
