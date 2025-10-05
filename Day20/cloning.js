@@ -43,8 +43,41 @@ users.forEach(user=>{
  userContainer.appendChild(clonedUserTemplate);
 
 
-function updateFunction(name,email){
-    let  findEmail = users.find(user=> user.email == email){
-        users
-    }
-}
+// function updateFunction(name,email){
+//     let  findEmail = users.find(user=> user.email == email){
+//         users
+//     }
+// }
+
+// Task two 
+
+let products = [
+  { name: "Product 1", price: 100 },
+  { name: "Product 2", price: 150 },
+  { name: "Product 3", price: 200 },
+ 
+];
+
+//  clone the item
+const productContainer = document.getElementById('product-container')
+const productTemplate  = document.getElementById('product-template')
+// console.log(productContainer)
+
+function renderProducts(products){
+    const fragment =document.createDocumentFragment();
+    products.forEach(product=>{
+        const clone = productTemplate.content.cloneNode(true);
+        clone.querySelector('.name').textContent = product.name;
+        clone.querySelector('.price').textContent = product.price;
+
+        fragment.appendChild(clone);
+        
+    })
+    productContainer.innerHTML ="";
+    productContainer.appendChild(fragment);
+
+};
+
+
+
+renderProducts(products)
