@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clone JS</title>
-</head>
-<body>
-    <template id="user-card">
-  <div class="card">
-    <h2 class="name"></h2>
-    <p class="email"></p>
-  </div>
-</template>
+//Cache the template container
+const template = document.getElementById('user-card');
+// console.log(template);
+// console.log(template.content);
 
-<div id="container"></div>
+const clone = template.content.cloneNode(true)// deep conpy
+console.log(clone)
 
-    <script src="./cloning.js"></script>
-</body>
-</html>
+clone.querySelector('.name').textContent ="Jhon"
+clone.querySelector('.email').textContent ="john@example.com"
+
+document.getElementById('container').appendChild(clone);
+
+const div = document.createElement('div');
+div.innerHTML = "<p style='display:none'>Hidden</p><p>Visible</p>";
+
+console.log(div.textContent);  // ?
+console.log(div.innerText);    // ?
