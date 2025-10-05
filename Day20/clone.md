@@ -1,4 +1,4 @@
-What is a <template> element?
+What is a **<template> **element?
 
 Let’s begin with a small HTML setup:
 
@@ -14,10 +14,10 @@ Let’s begin with a small HTML setup:
 ```
 
 *Now — can you tell me what happens if you open this HTML in a browser?
-👉 Will anything from inside <template> be visible?
+👉 Will anything from inside** <template>** be visible?
 *
-Why <template> content isn’t displayed
+Why** <template>** content isn’t displayed
 
-> The <template> tag is like a hidden blueprint — its content is stored in memory, not rendered in the DOM.
+> The **<template>** tag is like a hidden blueprint — its content is stored in memory, not rendered in the DOM.
 > 
 > You can think of it as a draft or HTML snippet waiting to be cloned later by JavaScript.
