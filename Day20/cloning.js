@@ -70,6 +70,15 @@ function renderProducts(products){
         clone.querySelector('.name').textContent = product.name;
         clone.querySelector('.price').textContent = product.price;
 
+        // Delete product 
+        const removebtn =clone.querySelector('.remove-btn');
+        console.log(removebtn)
+        removebtn.addEventListener('click',()=>{
+            products = products.filter(item => item.name != product.name);
+            renderProducts(products)
+        })
+        
+
         fragment.appendChild(clone);
         
     })
