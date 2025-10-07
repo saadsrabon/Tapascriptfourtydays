@@ -46,10 +46,20 @@ function loadQuestions()
         const btn = document.createElement('btn');
         btn.classList.add('option-btn')
         btn.textContent =q
-        
+        btn.addEventListener('click',handleOptionButton)
         optionsEl.appendChild(btn);
     })
 
+}
+
+//btn functionality
+function handleOptionButton(){
+    if(this.textContent == questions[currentQuestion].options[questions[currentQuestion].correct]){
+      //add color 
+      this.className ="option-btn correct"
+    }else{
+      console.log(questions[currentQuestion].options[questions[currentQuestion].correct])
+    }
 }
 
 loadQuestions()
