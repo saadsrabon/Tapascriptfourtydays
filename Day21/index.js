@@ -41,6 +41,14 @@ function loadQuestions()
 {   
     // show the Question
     questionEl.textContent =`Q ${currentQuestion+1}. ${questions[currentQuestion].question}`;
+    // show the options
+    questions[currentQuestion].options.forEach(q=>{
+        const btn = document.createElement('btn');
+        btn.classList.add('option-btn')
+        btn.textContent =q
+        
+        optionsEl.appendChild(btn);
+    })
 
 }
 
