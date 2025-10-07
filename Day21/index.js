@@ -25,3 +25,21 @@ const quizData = [
       correct: 2
     }
 ];
+
+const questions  = [...quizData].sort(()=>Math.random()-0.5)
+
+// Utils elements
+let currentQuestion =0;
+// Cache the main items
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextBtn = document.getElementById("next-btn");
+const timerEl = document.getElementById("timer");
+const resultEl = document.getElementById("result");
+
+function loadQuestions()
+{
+    questionEl.textContent =questions[currentQuestion].question;
+}
+
+loadQuestions()
