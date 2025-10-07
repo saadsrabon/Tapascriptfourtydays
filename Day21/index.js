@@ -38,8 +38,10 @@ const timerEl = document.getElementById("timer");
 const resultEl = document.getElementById("result");
 
 function loadQuestions()
-{
-    questionEl.textContent =questions[currentQuestion].question;
+{   
+    // show the Question
+    questionEl.textContent =`Q ${currentQuestion+1}. ${questions[currentQuestion].question}`;
+
 }
 
 loadQuestions()
