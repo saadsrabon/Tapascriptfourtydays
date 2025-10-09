@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recipe Finder — UI (HTML + CSS)</title>
+  <meta name="description" content="Recipe Finder UI — HTML & CSS only. Clean responsive design." />
+  <style>
+    :root{
+      --bg:#0f1724; /* deep midnight */
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#ff6b6b;
+      --accent-2:#7c5cff;
+      --glass: rgba(255,255,255,0.04);
+      --card-radius:14px;
+      --max-width:1200px;
+      --shadow: 0 8px 20px rgba(2,6,23,0.6);
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,0.08), transparent 6%),
+        linear-gradient(180deg, rgba(12,18,32,1) 0%, rgba(6,9,16,1) 100%);
+      font-size:16px;
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:48px 20px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      gap:24px;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+    }
+
+    header.topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:28px;
+    }
+
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+
+    .logo{
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      box-shadow: 0 6px 18px rgba(124,92,255,0.12), inset 0 -6px 14px rgba(255,255,255,0.04);
+    }
+    .logo span{font-size:20px; letter-spacing:-0.5px}
+
+    .brand h1{
+      margin:0;
+      font-size:18px;
+      line-height:1;
+    }
+    .brand p{margin:0; font-size:13px; color:var(--muted)}
+
+    .top-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .btn{
+      padding:10px 14px;
+      border-radius:10px;
+      background:var(--glass);
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.03);
+      font-size:14px;
+      cursor:default;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+    .btn.primary{
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:white;
+      box-shadow: 0 6px 20px rgba(124,92,255,0.12);
+      border:none;
+    }
+
+    main.grid{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:22px;
+      align-items:start;
+    }
+
+    /* LEFT: search + filters + results */
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:20px;
+      border-radius:var(--card-radius);
+      box-shadow: var(--shadow);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    .hero{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      padding:18px;
+      border-radius:12px;
+      background: linear-gradient(90deg, rgba(124,92,255,0.06), rgba(255,107,107,0.04));
+      margin-bottom:14px;
+    }
+    .hero .left{
+      flex:1;
+    }
+    .hero h2{margin:0;font-size:20px}
+    .hero p{margin:6px 0 0; color:var(--muted); font-size:13px}
+
+    /* Search bar */
+    .searchbar{
+      display:flex;
+      gap:12px;
+      margin:16px 0 20px;
+    }
+    .searchbar input[type="search"]{
+      flex:1;
+      padding:12px 14px;
+      border-radius:12px;
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.04);
+      color:inherit;
+      outline:none;
+      font-size:15px;
+    }
+    .searchbar .search-btn{
+      padding:10px 14px;
+      border-radius:12px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      border:none;
+      color:white;
+      font-weight:600;
+      cursor:default;
+    }
+
+    .filters{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+    .chip{
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.03);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .chip.active{
+      background:linear-gradient(90deg,var(--accent-2),var(--accent));
+      color:white;
+      box-shadow: 0 6px 18px rgba(124,92,255,0.06);
+    }
+
+    /* Results grid */
+    .results-grid{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:16px;
+    }
+
+    /* card */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.03);
+      transition: transform .22s ease, box-shadow .22s ease;
+      cursor:default;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+    .card:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(2,6,23,0.6);
+    }
+
+    .card .thumb{
+      height:140px;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+    }
+    .card .time{
+      position:absolute;
+      right:10px;
+      bottom:10px;
+      padding:6px 8px;
+      font-size:12px;
+      border-radius:10px;
+      background: rgba(0,0,0,0.45);
+      color:#fff;
+      backdrop-filter: blur(4px);
+    }
+
+    .card .meta{
+      padding:12px;
+      display:flex;
+      gap:12px;
+      flex-direction:column;
+      flex:1;
+    }
+    .card .meta h3{
+      margin:0;
+      font-size:15px;
+    }
+    .card .meta p{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      flex:1;
+    }
+    .card .meta .tags{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .tag{
+      font-size:12px;
+      padding:6px 8px;
+      border-radius:8px;
+      background:rgba(255,255,255,0.02);
+      color:var(--muted);
+    }
+
+    .card .cta{
+      padding:12px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      border-top:1px solid rgba(255,255,255,0.02);
+    }
+    .btn-ghost{
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:transparent;
+      color:var(--muted);
+      font-size:13px;
+      cursor:default;
+    }
+    .btn-primary{
+      margin-left:auto;
+      padding:10px 12px;
+      border-radius:10px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:white;
+      border:none;
+      font-weight:600;
+      cursor:default;
+    }
+
+    /* RIGHT: detail panel */
+    .side{
+      position:sticky;
+      top:48px;
+      align-self:start;
+      width:100%;
+    }
+    .detail{
+      padding:18px;
+      border-radius:12px;
+    }
+    .detail h3{margin:0 0 8px}
+    .detail p{margin:0;color:var(--muted);font-size:14px}
+    .detail .small{
+      margin-top:12px;
+      color:var(--muted);
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .progress{
+      height:10px;
+      background:rgba(255,255,255,0.03);
+      border-radius:999px;
+      margin-top:12px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .progress > i{
+      display:block;
+      height:100%;
+      width:48%;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    }
+
+    /* pagination */
+    .pagination{
+      display:flex;
+      gap:8px;
+      justify-content:center;
+      margin-top:22px;
+    }
+    .page{
+      padding:8px 10px;
+      border-radius:8px;
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.03);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .page.active{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:white;
+    }
+
+    footer{
+      margin-top:26px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* responsive */
+    @media (max-width:1100px){
+      main.grid{grid-template-columns:1fr 320px}
+      .results-grid{grid-template-columns: repeat(2,1fr)}
+    }
+    @media (max-width:760px){
+      body{padding:20px}
+      main.grid{grid-template-columns:1fr}
+      .results-grid{grid-template-columns: repeat(1,1fr)}
+      .side{position:static; order:3}
+      .hero{flex-direction:column; align-items:flex-start}
+    }
+
+    /* small niceties */
+    .muted{color:var(--muted)}
+    .sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><span>RF</span></div>
+        <div>
+          <h1>Recipe Finder</h1>
+          <p>Discover recipes • save • practice</p>
+        </div>
+      </div>
+
+      <div class="top-actions" role="navigation" aria-label="Top actions">
+        <div class="btn muted">Browse</div>
+        <div class="btn">Collections</div>
+        <div class="btn primary">Sign in</div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <!-- LEFT: search + results -->
+      <section class="panel" aria-labelledby="search-heading">
+        <div class="hero" role="region" aria-label="Search recipes">
+          <div class="left">
+            <h2 id="search-heading">Find your next meal</h2>
+            <p>Search by ingredient, cuisine, or recipe name. Filter by time, difficulty, or dietary needs.</p>
+          </div>
+          <div style="width:180px;text-align:right">
+            <div class="muted" style="font-size:13px">Today's suggestion</div>
+            <strong style="display:block;margin-top:6px">Spicy Thai Noodles 🌶️</strong>
+          </div>
+        </div>
+
+        <form class="searchbar" role="search" onsubmit="return false;">
+          <label class="sr-only" for="search-input">Search recipes</label>
+          <input id="search-input" type="search" placeholder="Search recipes, e.g., chicken curry, vegan pasta..." />
+          <button class="search-btn" aria-hidden="true">Search</button>
+        </form>
+
+        <div class="filters" aria-hidden="true">
+          <span class="chip active">Popular</span>
+          <span class="chip"><strong>Under 30m</strong></span>
+          <span class="chip">Vegan</span>
+          <span class="chip">Gluten-free</span>
+          <span class="chip">Dessert</span>
+          <span class="chip">Low-carb</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <div style="font-weight:600">Showing 18 recipes</div>
+          <div class="muted" style="font-size:13px">Sorted by relevance</div>
+        </div>
+
+        <div class="results-grid" role="list" aria-label="Recipe results">
+          <!-- Card 1 -->
+          <article class="card" role="listitem" aria-labelledby="r1">
+            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=800&q=60')">
+              <div class="time">25m</div>
+            </div>
+            <div class="meta">
+              <h3 id="r1">One-Pot Lemon Chicken</h3>
+              <p>Bright, garlicky chicken with a crisp skin, one-pot convenience and fresh herbs.</p>
+              <div class="tags">
+                <span class="tag">30m</span>
+                <span class="tag">Easy</span>
+                <span class="tag">Mediterranean</span>
+              </div>
+            </div>
+            <div class="cta">
+              <button class="btn-ghost">Save</button>
+              <button class="btn-primary">View Recipe</button>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card" role="listitem" aria-labelledby="r2">
+            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1512058564366-c9e0b5f0b5b6?auto=format&fit=crop&w=800&q=60')">
+              <div class="time">15m</div>
+            </div>
+            <div class="meta">
+              <h3 id="r2">Spicy Thai Noodles</h3>
+              <p>Flavor-packed noodles with a tangy peanut sauce and crunchy veggies.</p>
+              <div class="tags">
+                <span class="tag">15m</span>
+                <span class="tag">Vegan</span>
+                <span class="tag">Street Food</span>
+              </div>
+            </div>
+            <div class="cta">
+              <button class="btn-ghost">Save</button>
+              <button class="btn-primary">View Recipe</button>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card" role="listitem" aria-labelledby="r3">
+            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=60')">
+              <div class="time">40m</div>
+            </div>
+            <div class="meta">
+              <h3 id="r3">Classic Beef Stew</h3>
+              <p>Slow-simmered beef with root vegetables and a rich, silky gravy.</p>
+              <div class="tags">
+                <span class="tag">40m</span>
+                <span class="tag">Medium</span>
+                <span class="tag">Comfort</span>
+              </div>
+            </div>
+            <div class="cta">
+              <button class="btn-ghost">Save</button>
+              <button class="btn-primary">View Recipe</button>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="card" role="listitem" aria-labelledby="r4">
+            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1543353071-087092ec3931?auto=format&fit=crop&w=800&q=60')">
+              <div class="time">10m</div>
+            </div>
+            <div class="meta">
+              <h3 id="r4">Avocado Toast Deluxe</h3>
+              <p>Crunchy sourdough, smashed avocado, lemon, chilli flakes and feta.</p>
+              <div class="tags">
+                <span class="tag">10m</span>
+                <span class="tag">Easy</span>
+                <span class="tag">Breakfast</span>
+              </div>
+            </div>
+            <div class="cta">
+              <button class="btn-ghost">Save</button>
+              <button class="btn-primary">View Recipe</button>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="card" role="listitem" aria-labelledby="r5">
+            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=60')">
+              <div class="time">50m</div>
+            </div>
+            <div class="meta">
+              <h3 id="r5">Vegetable Lasagna</h3>
+              <p>Layered with roasted vegetables, creamy béchamel and a crisp top.</p>
+              <div class="tags">
+                <span class="tag">50m</span>
+                <span class="tag">Medium</span>
+                <span class="tag">Italian</span>
+              </div>
+            </div>
+            <div class="cta">
+              <button class="btn-ghost">Save</button>
+              <button class="btn-primary">View Recipe</button>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="card" role="listitem" aria-labelledby="r6">
+            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1541542684-1b6f2bfa0f7e?auto=format&fit=crop&w=800&q=60')">
+              <div class="time">8m</div>
+            </div>
+            <div class="meta">
+              <h3 id="r6">Greek Yogurt Parfait</h3>
+              <p>Layered yogurt with honey, granola and seasonal berries.</p>
+              <div class="tags">
+                <span class="tag">8m</span>
+                <span class="tag">Easy</span>
+                <span class="tag">Healthy</span>
+              </div>
+            </div>
+            <div class="cta">
+              <button class="btn-ghost">Save</button>
+              <button class="btn-primary">View Recipe</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="pagination" aria-label="Pagination">
+          <div class="page">&laquo;</div>
+          <div class="page active">1</div>
+          <div class="page">2</div>
+          <div class="page">3</div>
+          <div class="page">&raquo;</div>
+        </div>
+      </section>
+
+      <!-- RIGHT: detail / saved list -->
+      <aside class="side">
+        <div class="panel detail">
+          <h3>Recipe Preview</h3>
+          <p class="muted">Hover any recipe card to preview a short summary here (CSS-only mock).</p>
+
+          <div style="height:16px"></div>
+
+          <div class="small">
+            <div>
+              <strong>Difficulty</strong>
+              <div class="muted">Easy</div>
+            </div>
+            <div>
+              <strong>Servings</strong>
+              <div class="muted">2 - 4</div>
+            </div>
+            <div>
+              <strong>Calories</strong>
+              <div class="muted">~420 kcal</div>
+            </div>
+          </div>
+
+          <div class="progress" aria-hidden="true"><i></i></div>
+
+          <div style="margin-top:14px; display:flex; gap:10px;">
+            <button class="btn-ghost" style="flex:1">Add to Shopping List</button>
+            <button class="btn-primary" style="flex:1">Start Cooking</button>
+          </div>
+
+          <div style="margin-top:12px; color:var(--muted); font-size:13px">
+            <strong>Saved</strong>
+            <div style="margin-top:8px">
+              <div class="muted">No saved recipes yet. Click "Save" on any recipe.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="panel" style="padding:14px">
+          <strong>Quick Filters</strong>
+          <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+            <span class="chip">Breakfast</span>
+            <span class="chip">Lunch</span>
+            <span class="chip">Dinner</span>
+            <span class="chip">Snacks</span>
+          </div>
+
+          <div style="margin-top:14px;color:var(--muted);font-size:13px">
+            <strong>Cook time</strong>
+            <div style="margin-top:8px" class="muted">Under 15m • Under 30m • Under 60m</div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      Built with ♥ — Saad Srabon
+    </footer>
+  </div>
+</body>
+</html>
