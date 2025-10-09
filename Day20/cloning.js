@@ -62,6 +62,7 @@ let products = [
 const productContainer = document.getElementById('product-container')
 const productTemplate  = document.getElementById('product-template')
 // console.log(productContainer)
+/// we did create fragment and dudu clone the  node each time so that its not overwritten every time
 
 function renderProducts(products){
     const fragment =document.createDocumentFragment();
