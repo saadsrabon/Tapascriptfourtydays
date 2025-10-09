@@ -1,0 +1,113 @@
+
+  { "recipe": [
+    {
+      "id": 1,
+      "name": "Spaghetti Carbonara",
+      "image": "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=800&q=60",
+      "category": "Pasta",
+      "time": "25 min",
+      "difficulty": "Easy",
+      "ingredients": [
+        "200g spaghetti",
+        "2 eggs",
+        "50g Parmesan cheese",
+        "100g pancetta",
+        "Salt and black pepper"
+      ],
+      "instructions": [
+        "Boil pasta until al dente.",
+        "Fry pancetta until crispy.",
+        "Whisk eggs and Parmesan in a bowl.",
+        "Drain pasta and mix with pancetta.",
+        "Add egg mixture and stir quickly off heat."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Chicken Curry",
+      "image": "https://example.com/images/chicken-curry.jpg",
+      "category": "Curry",
+      "time": "40 min",
+      "difficulty": "Medium",
+      "ingredients": [
+        "500g chicken breast",
+        "2 onions",
+        "3 garlic cloves",
+        "2 tbsp curry powder",
+        "200ml coconut milk"
+      ],
+      "instructions": [
+        "Sauté onions and garlic until soft.",
+        "Add chicken and brown slightly.",
+        "Stir in curry powder.",
+        "Pour in coconut milk and simmer 25 minutes.",
+        "Serve with steamed rice."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Avocado Toast",
+      "image": "https://example.com/images/avocado-toast.jpg",
+      "category": "Breakfast",
+      "time": "10 min",
+      "difficulty": "Easy",
+      "ingredients": [
+        "2 slices bread",
+        "1 ripe avocado",
+        "Lemon juice",
+        "Chili flakes",
+        "Salt"
+      ],
+      "instructions": [
+        "Toast bread until golden.",
+        "Mash avocado with lemon juice and salt.",
+        "Spread mixture on toast.",
+        "Top with chili flakes and serve."
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Chocolate Brownies",
+      "image": "https://example.com/images/chocolate-brownies.jpg",
+      "category": "Dessert",
+      "time": "35 min",
+      "difficulty": "Medium",
+      "ingredients": [
+        "200g dark chocolate",
+        "150g butter",
+        "3 eggs",
+        "100g flour",
+        "150g sugar"
+      ],
+      "instructions": [
+        "Melt chocolate and butter together.",
+        "Whisk eggs and sugar until fluffy.",
+        "Mix in melted chocolate.",
+        "Add flour and fold until smooth.",
+        "Bake for 25 minutes at 180°C."
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Greek Salad",
+      "image": "https://example.com/images/greek-salad.jpg",
+      "category": "Salad",
+      "time": "15 min",
+      "difficulty": "Easy",
+      "ingredients": [
+        "2 tomatoes",
+        "1 cucumber",
+        "1 red onion",
+        "100g feta cheese",
+        "Olives and olive oil"
+      ],
+      "instructions": [
+        "Chop vegetables and mix in a bowl.",
+        "Add olives and feta cheese.",
+        "Drizzle with olive oil.",
+        "Season with salt and serve."
+      ]
+    }
+  ]
+
+  }

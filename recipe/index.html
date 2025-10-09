@@ -58,11 +58,9 @@
           <div style="font-weight:600">Showing 18 recipes</div>
           <div class="muted" style="font-size:13px">Sorted by relevance</div>
         </div>
-
-        <div class="results-grid" role="list" aria-label="Recipe results">
-          <!-- Card 1 -->
-          <article class="card" role="listitem" aria-labelledby="r1">
-            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=800&q=60')">
+        <template class="card"  >
+            <article role="listitem" aria-labelledby="r1">
+            <div class="thumb" >
               <div class="time">25m</div>
             </div>
             <div class="meta">
@@ -79,106 +77,12 @@
               <button class="btn-primary">View Recipe</button>
             </div>
           </article>
+        </template>
+        <div class="results-grid" role="list" aria-label="Recipe results">
+          <!-- Card 1 -->
+          
 
-          <!-- Card 2 -->
-          <article class="card" role="listitem" aria-labelledby="r2">
-            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1512058564366-c9e0b5f0b5b6?auto=format&fit=crop&w=800&q=60')">
-              <div class="time">15m</div>
-            </div>
-            <div class="meta">
-              <h3 id="r2">Spicy Thai Noodles</h3>
-              <p>Flavor-packed noodles with a tangy peanut sauce and crunchy veggies.</p>
-              <div class="tags">
-                <span class="tag">15m</span>
-                <span class="tag">Vegan</span>
-                <span class="tag">Street Food</span>
-              </div>
-            </div>
-            <div class="cta">
-              <button class="btn-ghost">Save</button>
-              <button class="btn-primary">View Recipe</button>
-            </div>
-          </article>
-
-          <!-- Card 3 -->
-          <article class="card" role="listitem" aria-labelledby="r3">
-            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=60')">
-              <div class="time">40m</div>
-            </div>
-            <div class="meta">
-              <h3 id="r3">Classic Beef Stew</h3>
-              <p>Slow-simmered beef with root vegetables and a rich, silky gravy.</p>
-              <div class="tags">
-                <span class="tag">40m</span>
-                <span class="tag">Medium</span>
-                <span class="tag">Comfort</span>
-              </div>
-            </div>
-            <div class="cta">
-              <button class="btn-ghost">Save</button>
-              <button class="btn-primary">View Recipe</button>
-            </div>
-          </article>
-
-          <!-- Card 4 -->
-          <article class="card" role="listitem" aria-labelledby="r4">
-            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1543353071-087092ec3931?auto=format&fit=crop&w=800&q=60')">
-              <div class="time">10m</div>
-            </div>
-            <div class="meta">
-              <h3 id="r4">Avocado Toast Deluxe</h3>
-              <p>Crunchy sourdough, smashed avocado, lemon, chilli flakes and feta.</p>
-              <div class="tags">
-                <span class="tag">10m</span>
-                <span class="tag">Easy</span>
-                <span class="tag">Breakfast</span>
-              </div>
-            </div>
-            <div class="cta">
-              <button class="btn-ghost">Save</button>
-              <button class="btn-primary">View Recipe</button>
-            </div>
-          </article>
-
-          <!-- Card 5 -->
-          <article class="card" role="listitem" aria-labelledby="r5">
-            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=60')">
-              <div class="time">50m</div>
-            </div>
-            <div class="meta">
-              <h3 id="r5">Vegetable Lasagna</h3>
-              <p>Layered with roasted vegetables, creamy béchamel and a crisp top.</p>
-              <div class="tags">
-                <span class="tag">50m</span>
-                <span class="tag">Medium</span>
-                <span class="tag">Italian</span>
-              </div>
-            </div>
-            <div class="cta">
-              <button class="btn-ghost">Save</button>
-              <button class="btn-primary">View Recipe</button>
-            </div>
-          </article>
-
-          <!-- Card 6 -->
-          <article class="card" role="listitem" aria-labelledby="r6">
-            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1541542684-1b6f2bfa0f7e?auto=format&fit=crop&w=800&q=60')">
-              <div class="time">8m</div>
-            </div>
-            <div class="meta">
-              <h3 id="r6">Greek Yogurt Parfait</h3>
-              <p>Layered yogurt with honey, granola and seasonal berries.</p>
-              <div class="tags">
-                <span class="tag">8m</span>
-                <span class="tag">Easy</span>
-                <span class="tag">Healthy</span>
-              </div>
-            </div>
-            <div class="cta">
-              <button class="btn-ghost">Save</button>
-              <button class="btn-primary">View Recipe</button>
-            </div>
-          </article>
+        
         </div>
 
         <div class="pagination" aria-label="Pagination">
@@ -250,6 +154,8 @@
     <footer>
       Built with ♥ — Saad Srabon
     </footer>
+
   </div>
+  <script type="module" src="index.js"></script>
 </body>
 </html>
