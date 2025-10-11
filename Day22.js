@@ -30,3 +30,45 @@ function delayedMessage(message, delay, callback) {
 }
 
 delayedMessage("Task complete", 2000, (delayedMessage) => console.log(delayedMessage))
+
+// 4. Implement a function that filters numbers in an array based on a condition provided via callback
+
+const filterFunction =(numbers,condition)=>{
+    return condition(numbers);
+
+}
+
+const getOdd =(numbers)=>{
+    const filtered =[]
+    numbers.forEach((item =>{
+        if(item%2 ==0 ){
+            filtered.push(item)
+        }else{
+            return
+        }
+    }))
+    return filtered;
+}
+
+console.log(filterFunction([4,5,6,7,8,10],getOdd));
+
+
+function task1(callback) {
+  console.log("Task 1 done");
+  callback();
+}
+
+function task2(callback) {
+  console.log("Task 2 done");
+  callback();
+}
+
+function task3() {
+  console.log("Task 3 done");
+}
+
+// Call them in sequence using nested callbacks
+
+task1(()=>{
+    task2(task3)
+})
