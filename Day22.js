@@ -22,3 +22,11 @@ function add(x, y) {
 }
 
  console.log(calculator(5, 3, add))
+
+//   Create a delayedMessage function that prints a message after a delay using setTimeout
+function delayedMessage(message, delay, callback) {
+  // Your code here
+  setTimeout(()=>callback(message),delay);
+}
+
+delayedMessage("Task complete", 2000, (delayedMessage) => console.log(delayedMessage))
