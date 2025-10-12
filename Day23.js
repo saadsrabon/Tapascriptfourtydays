@@ -46,7 +46,7 @@ const promise = new Promise(function(resolve,reject){
 promise.then(data=>console.log(data));
 
 //Reject a promise
-
+//.then() can take two arguments: the first for success, the second for failure:
 const promise2 = new Promise(function(resolve,reject){
     reject("I am rejecting this Promise for you");
 })
@@ -59,3 +59,43 @@ promise2.then(
         console.log(error)
     }
 )
+
+//Return a Promise that randomly resolves to "Heads" or "Tails" after 1 second.
+
+const toss = new Promise(function(resolve,reject){
+    let value = Math.floor(Math.random()*2);
+    console.log(value)
+    value ==0?resolve("Head"):resolve("Tails")
+})
+
+toss.then(data=>console.log(data));
+
+//Chain promise
+const chain =new Promise(function(resolve,reject)
+{
+    resolve("step One done");
+}
+)
+
+chain.then(data=>{
+    console.log(data);
+    return data = 'Step 2 is done'
+})
+.then(data=>{
+    console.log(data)
+    return data = "step 3 is done"
+})
+.then(data=>console.log(data))
+
+
+//  Value Transformation in Chain
+// Create a Promise that resolves with 5.
+// Chain .then() handlers to double it, then square it.
+// Final output should be 100.
+
+const transformer = new Promise(function(resolve,reject){
+    
+    resolve(5);
+})
+
+transformer.then(v=>{ return v*2}).then(v=>v*v).then(v=>console.log(v));
