@@ -143,3 +143,21 @@ rej2
   .then(data => console.log(data)) // runs only if no rejection
   .catch(err => console.log("Caught error:", err));
 
+// 9. Return New Promises in .then()
+// Chain multiple .then() where each returns a new Promise with a delay and logs a step like:
+// “First”
+// “Second”
+// “Third”
+
+const delayLog =(message,time)=>{
+    return new Promise((res,rej)=>{
+        setTimeout(()=>{
+            console.log(message ,"time second")
+            res(time)
+        },time)
+    })
+}
+new Promise((res)=>res())
+.then((d)=> delayLog("First",1000) )
+.then((d)=> delayLog("second",1000) )
+.then((d)=> delayLog("third",1000) )
