@@ -99,3 +99,47 @@ const transformer = new Promise(function(resolve,reject){
 })
 
 transformer.then(v=>{ return v*2}).then(v=>v*v).then(v=>console.log(v));
+
+
+// 7. Chain with Random Rejection
+// First .then() resolves to "Start".
+// Second .then() randomly throws an error or returns "Continue".
+// Handle rejection gracefully.
+const rej = new Promise((resolve, reject) => {
+  resolve("Start"); // first step always succeeds
+});
+
+rej
+  .then(data => {
+    console.log(data); // "Start"
+    
+    // randomly throw error or continue
+    if (Math.random() > 0.5) {
+      throw new Error("Random error occurred!");
+    } else {
+      return "Continue";
+    }
+  })
+  .then(data => console.log(data)) // runs only if no error
+  .catch(err => console.log("Caught error:", err.message));
+
+  const rej2 = new Promise((resolve, reject) => {
+  resolve("Start"); // first step always succeeds
+});
+
+
+// Do the error by reject()
+rej2
+  .then(data => {
+    console.log(data); // "Start"
+    
+    // randomly resolve or reject
+    if (Math.random() > 0.5) {
+      return Promise.reject("Random error occurred!");
+    } else {
+      return "Continue";
+    }
+  })
+  .then(data => console.log(data)) // runs only if no rejection
+  .catch(err => console.log("Caught error:", err));
+
