@@ -44,3 +44,18 @@ const promise = new Promise(function(resolve,reject){
 })
 
 promise.then(data=>console.log(data));
+
+//Reject a promise
+
+const promise2 = new Promise(function(resolve,reject){
+    reject("I am rejecting this Promise for you");
+})
+
+promise2.then(
+    data =>{
+        console.log(data)
+    },
+    error=>{
+        console.log(error)
+    }
+)
