@@ -30,3 +30,15 @@ const getUserDetails = async () => {
 getUserDetails();
 
 
+
+  const mockApi =async()=>{
+    try{
+          const res = await   fetch('/api/data')
+//   .then(res => res.json())
+   const data =  res.json()
+    } catch(errr){
+        console.log(errr)
+    }
+  }
+
+
