@@ -14,10 +14,19 @@ const run =async()=>{
 run()
 // Use the public API https://jsonplaceholder.typicode.com/users/1 to fetch and display the user’s name, email, and address on the page
 
-const getUserDetails = async()=>{
-    const response = await fetch('https://jsonplaceholder.typicode.com/users/1'); // will return a promise
+const getUserDetails = async () => {
+  try {
+    const response = await fetch('https://jsonffplaceholder.typicode.com/users/1');
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
     const data = await response.json();
     console.log(data);
-}
+  } catch (err) {
+    console.error('Error caught:', err.message);
+  }
+};
 
-getUserDetails()
+getUserDetails();
+
+
