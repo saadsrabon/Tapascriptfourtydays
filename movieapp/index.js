@@ -56,3 +56,6 @@ const loadMovies= async ()=>{
    }
     
 }
+
+
+loadMovies()
