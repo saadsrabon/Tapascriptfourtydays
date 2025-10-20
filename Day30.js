@@ -234,3 +234,53 @@ const sm= new SmartLightBulb();
 sm.turnOn()
 sm.turnOff()
 // sm.connectToWifi() // giving error that its not an function
+
+// Animal Class and Subclasses
+// Base Class: Animal(name, sound)
+// Method: makeSound() logs: "The [name] says [sound]"
+// Subclass 1: Dog(name) — inherits from Animal
+// Overrides makeSound() → "The Dog [name] barks!"
+// Subclass 2: Cat(name) — overrides makeSound() → "The Cat [name] meows!"
+// Call super() inside each subclass constructor
+// Add a shared method sleep() in Animal and test with both Dog and Cat instances.
+
+class Animals{
+  constructor(name,sound){
+    this.name = name
+    this.sound =sound
+  }
+
+  makeSound(){
+    console.log(`${this.name} says ${this.sound}`)
+  }
+
+  sleep(){
+    console.log(this.name ,"is sleeping")
+  }
+
+}
+
+class Cat extends Animals{
+  constructor(name,sound){
+    super(name,sound)
+  }
+  makeSound(){
+    console.log("The Cat meeows")
+  }
+}
+class Dog extends Animals{
+  constructor(name,sound){
+    super(name,sound)
+  }
+  makeSound(){
+    console.log("The Dogs bark")
+  }
+}
+
+const dog = new Dog("Tommy","Bark")
+const cat = new Cat ("Jimmy" ,"Meow")
+
+console.log(dog.makeSound())
+console.log(cat.makeSound())
+console.log(dog.sleep())
+console.log(cat.sleep())
