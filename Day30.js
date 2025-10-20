@@ -210,3 +210,27 @@ class Vehicle{
 // turnOn() first calls #connectToWiFi() and then logs: "Light is ON"
 // Static method: info() — logs "SmartLightBulb v1.0 supports remote control and scheduling."
 // Try accessing the private method directly and observe the error.
+
+
+class SmartLightBulb{
+  #connectToWifi(){
+    console.log("connected to wifi");
+  }
+  turnOn(){
+    this.#connectToWifi();
+    console.log("Light is on");
+  }
+  turnOff(){
+    console.log("light is off")
+  }
+
+  static info(){
+    console.log("SmartLightBulb v1.0 supports remote control and scheduling.")
+  }
+}
+
+console.log(SmartLightBulb.info())
+const sm= new SmartLightBulb();
+sm.turnOn()
+sm.turnOff()
+// sm.connectToWifi() // giving error that its not an function
