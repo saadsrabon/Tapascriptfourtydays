@@ -86,3 +86,127 @@ console.log(user.name); // still "Saad"
 
 
 
+////
+
+class Task {
+  constructor(name){
+    this.name =name,
+    this.status = "pending"
+  }
+}
+class TodoListManager {
+  tasks =[];
+  createTask (task){
+    this.tasks.push(task)
+  }
+  markDone(name){
+    let selected =this.tasks.find(t=>t.name === name);
+    if(selected.status =="Pending"){
+    selected.status ="Done"
+    }else{
+      selected.status ="Pending"
+    }
+  }
+
+  listAllPending (){
+   return this.tasks.filter(t=>t.status ==="Pending");
+  }
+
+}
+
+
+const Todos = new TodoListManager();
+
+Todos.createTask(new Task("Go to Gym"))
+Todos.createTask(new Task("Go to House"))
+Todos.createTask(new Task("Go to Baranda"))
+Todos.createTask(new Task("Go to Anywhere"))
+Todos.createTask(new Task("Go to Nowhere"));
+
+console.log(Todos.tasks);
+
+
+//  
+
+let tasks =[];
+
+// create task 
+const createTask= ( tasks , todo )=>{
+  return [...tasks,todo]
+};
+
+// modifyStatus
+
+const toggleStatus =(tasks,taskName)=>{
+  tasks.map(t=> {
+    if(t.name === taskName){
+     return {...t ,status: t.status === "pending" ? "done" : "pending"}
+    }
+  })
+}
+
+tasks = createTask(tasks, { name: "Go to Gym", status: "pending" });
+tasks = createTask(tasks, { name: "Go to House", status: "pending" });
+tasks = createTask(tasks, { name: "Go to Baranda", status: "pending" });
+
+tasks = toggleStatus(tasks, "Go to Gym");
+
+console.log(tasks)
+
+
+/// 
+class Temperature {
+  #celsius;
+  constructor(celsius) {
+    this.#celsius = celsius;
+  }
+
+  get fahrenheit() {
+    return (this.#celsius * 9) / 5 + 32;
+  }
+
+  set celsius(value) {
+    if (typeof value !== 'number') throw new Error('Temperature must be a number');
+    this.#celsius = value;
+  }
+}
+
+
+//   Private and Public Fields
+
+class User{
+  name
+  #password
+  constructor(name ,pass){
+    this.name =name
+    this.#password =pass
+  }
+  checkpassword(pass){
+    this.#password === pass?console.log(this.#password):console.log('wrong')
+  }
+}
+
+const userhuman = new User("saad",123);
+console.log(userhuman.name);
+console.log(userhuman.password)
+
+//  
+class Vehicle{
+  constructor(make,model){
+    this.make =make
+    this.model = model
+  }
+
+  start(){
+    console.log("Engine Start")
+  }
+}
+
+// ///
+
+// Create a SmartLightBulb class:
+// Public method: turnOn(), turnOff()
+// Private method: #connectToWiFi()
+// turnOn() first calls #connectToWiFi() and then logs: "Light is ON"
+// Static method: info() — logs "SmartLightBulb v1.0 supports remote control and scheduling."
+// Try accessing the private method directly and observe the error.
