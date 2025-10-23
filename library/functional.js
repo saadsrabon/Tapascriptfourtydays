@@ -64,9 +64,21 @@ function loggedInUser(role) {
 //show books on the ui 
 
 //add books 
-addBookFormHandle
+
+const form = document.getElementById("add-form")
+const submitBtn = document.getElementById("submit-btn")
+
+form.addEventListener('submit',addBookFormHandle)
+function addBookFormHandle(event){
+    event.preventDefault()
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    console.log(data)
+    addbook(data);
+}
 function addbook(book){
-   let books = JSON.parse(localStorage.getItem("books")) ;
+    console.log(book)
+   let books = JSON.parse(localStorage.getItem("books"))|| [] ;
     books.push(book)
     localStorage.setItem("books",JSON.stringify(books))
    
