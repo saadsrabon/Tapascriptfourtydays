@@ -1,13 +1,4 @@
-//
 
-let member = {
-    name: "Saad",
-    email: "saadsrabon2@gmail.com"
-}
-let admin = {
-    name: "Saad",
-    email: "saadsrabon2@gmail.com"
-}
 
 
 // Role switching functionality
@@ -42,7 +33,7 @@ memberRole.addEventListener('click', () => {
 });
 
 // Books Array 
-
+let books =[];
 function loggedInUser(role) {
 
      localStorage.clear()
@@ -68,3 +59,20 @@ function loggedInUser(role) {
     }
 
 }
+
+//Funtionalities
+//show books on the ui 
+
+//add books 
+addBookFormHandle
+function addbook(book){
+   let books = JSON.parse(localStorage.getItem("books")) ;
+    books.push(book)
+    localStorage.setItem("books",JSON.stringify(books))
+   
+}
+//borrow book
+
+//show available books
+//show borrowed books   
+
