@@ -6,7 +6,7 @@ const adminRole = document.getElementById('admin-role');
 const memberRole = document.getElementById('member-role');
 const adminSection = document.getElementById('admin-section');
 const memberSection = document.getElementById('member-section');
-  const bookContainer = document.getElementById('book-container')
+const bookContainer = document.getElementById('book-container')
 adminRole.addEventListener('click', () => {
     adminRole.classList.add('bg-primary', 'text-white');
     adminRole.classList.remove('text-gray-600');
@@ -15,7 +15,7 @@ adminRole.addEventListener('click', () => {
 
     adminSection.classList.remove('hidden');
     memberSection.classList.add('hidden');
-    
+
 
     loggedInUser('admin');
 });
@@ -29,27 +29,27 @@ memberRole.addEventListener('click', () => {
     memberSection.classList.remove('hidden');
     adminSection.classList.add('hidden');
     loggedInUser('member')
-    
+
 });
 
 // Books Array 
-let books =[];
+let books = [];
 function loggedInUser(role) {
 
-     localStorage.clear()
+    localStorage.clear()
 
-     if(role==='admin'){
+    if (role === 'admin') {
         localStorage.setItem('admin', JSON.stringify({
-        name: "Saad",
-        email: "saadsrabon2@gmail.com"
-    }))
-     }else{
+            name: "Saad",
+            email: "saadsrabon2@gmail.com"
+        }))
+    } else {
         localStorage.setItem('member', JSON.stringify({
-        name: "member",
-        email: "saadsrabon2@gmail.com"
-    }))
-     }
-    
+            name: "member",
+            email: "saadsrabon2@gmail.com"
+        }))
+    }
+
     let currentUser = localStorage.getItem(role)
 
     //
@@ -68,69 +68,71 @@ function loggedInUser(role) {
 const form = document.getElementById("add-form")
 const submitBtn = document.getElementById("submit-btn")
 
-form.addEventListener('submit',addBookFormHandle)
-function addBookFormHandle(event){
+form.addEventListener('submit', addBookFormHandle)
+function addBookFormHandle(event) {
     event.preventDefault()
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     console.log(data)
     addbook(data);
 }
-function addbook(book){
-   let id = crypto.randomUUID()
-   let books = JSON.parse(localStorage.getItem("books"))|| [] ;
-    book ={...book ,id,isavailable:true}
+function addbook(book) {
+    let id = crypto.randomUUID()
+    let books = JSON.parse(localStorage.getItem("books")) || [];
+    book = { ...book, id, isavailable: true }
     books.push(book)
-    localStorage.setItem("books",JSON.stringify(books))
+    localStorage.setItem("books", JSON.stringify(books))
     renderAvailableBooks()
 }
 //borrow book
 
-function borrowBook (bookId){
-  //chek for the user an
-  let user = JSON.parse(localStorage.getItem('admin') )|| JSON.parse(localStorage.getItem('member'));
+function borrowBook(bookId) {
+    //chek for the user an
+    let user = JSON.parse(localStorage.getItem('admin')) || JSON.parse(localStorage.getItem('member'));
 
- if(user.borrowItem){
-    user.borrowItem=[user.borrowItem,...bookId]
- }else{
-    user.borrowItem=[bookId];
- }
-
-  //
-  localStorage.getItem('admin')?JSON.stringify(localStorage.setItem('admin',user)):JSON.stringify(localStorage.setItem('member',user));
-
-  /// find out the book and change its isavailable to false
- let books = JSON.parse(localStorage.getItem("books"));
- let newBooks =books.map(b=> {
-    if(b.id === bookId){
-       return {...b,
-        isavailable:false}
-    }else{
-        return b
+    if (user.borrowItem) {
+        user.borrowItem = [user.borrowItem, ...bookId]
+    } else {
+        user.borrowItem = [bookId];
     }
- })
 
-  localStorage.setItem("books",JSON.stringify(newBooks))
-  renderAvailableBooks()
+    //
+    localStorage.getItem('admin') ? JSON.stringify(localStorage.setItem('admin', user)) : JSON.stringify(localStorage.setItem('member', user));
+
+    /// find out the book and change its isavailable to false
+    let books = JSON.parse(localStorage.getItem("books"));
+    let newBooks = books.map(b => {
+        if (b.id === bookId) {
+            return {
+                ...b,
+                isavailable: false
+            }
+        } else {
+            return b
+        }
+    })
+
+    localStorage.setItem("books", JSON.stringify(newBooks))
+    renderAvailableBooks()
 }
 
-bookContainer.addEventListener('click',(e)=>{
+bookContainer.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-action="borrow"]');
-    const bookId =btn.dataset.id
+    const bookId = btn.dataset.id
     console.log(bookId);
     borrowBook(bookId)
 })
 //show available books
-const renderAvailableBooks=()=>{
+const renderAvailableBooks = () => {
     // local storage theke  boi gula nibo
-  
-    let books = JSON.parse(localStorage.getItem('books'))|| [];
+
+    let books = JSON.parse(localStorage.getItem('books')) || [];
     console.log(books)
-if(books.length ===0){
-    bookContainer.innerHTML =`<p>No Books Available for now </p>`
-}else{
-    let html = books.map(book=>
-        `<div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+    if (books.length === 0) {
+        bookContainer.innerHTML = `<p>No Books Available for now </p>`
+    } else {
+        let html = books.map(book =>
+            `<div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
                         <div class="flex space-x-4">
                             <div class="w-16 h-20 bg-gray-100 rounded flex items-center justify-center">
                                 <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,7 +145,7 @@ if(books.length ===0){
                                 <p class="text-xs text-gray-500">ISBN: ${book.isbn}</p>
                                 <div class="mt-2 flex items-center justify-between">
                                     <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                       ${book.isavailable?"Available":"Not Available"}
+                                       ${book.isavailable ? "Available" : "Not Available"}
                                     </span>
                                     <span class="text-sm text-gray-600">3 copies</span>
                                 </div>
@@ -153,22 +155,22 @@ if(books.length ===0){
                             </div>
                         </div>
                     </div>`
-    ).join("")
-    bookContainer.innerHTML =html;
-}
+        ).join("")
+        bookContainer.innerHTML = html;
+    }
 
 }
 //show borrowed books   
-function showBorrowedBooks(){
+function showBorrowedBooks() {
 
-    let borrowBooksIds =[];
-    let member =JSON.parse(localStorage.getItem('member'));
-    borrowBooksIds =member.borrowItem;
+    let borrowBooksIds = [];
+    let member = JSON.parse(localStorage.getItem('member'));
+    borrowBooksIds = member.borrowItem;
     let allbooks = JSON.parse(localStorage.getItem('books'))
-    let matchedBooks = allbooks.filter(b=> borrowBooksIds.includes(b.id))
-    let borrowBookContainer =document.getElementById('borrow-container')
-    if(matchedBooks){
-        matchedBooks.map(i=> `<div class="space-y-4">
+    let matchedBooks = allbooks.filter(b => borrowBooksIds.includes(b.id))
+    let borrowBookContainer = document.getElementById('borrow-container')
+    if (matchedBooks) {
+        matchedBooks.map(i => `<div class="space-y-4">
                         <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
                             <div class="flex items-center space-x-4">
                                 <div class="w-12 h-16 bg-gray-100 rounded flex items-center justify-center">
