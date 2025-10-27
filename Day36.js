@@ -55,7 +55,8 @@ function countandShow(e) {
   showCount(string.length);
 }
 const throttledFunc = throttle(countandShow,5000)
-input.addEventListener('keyup', throttledFunc)
+const debouncedFubc = funcdebounce(countandShow,500)
+input.addEventListener('keyup',debouncedFubc )
 //show the count
 function showCount(length) {
   counttext.innerText = length;
@@ -70,5 +71,17 @@ function throttle(fn, interval) {
       lastTtime =now;
       return fn.apply(this, args)
     }
+  }
+}
+
+//debounce function --
+function funcdebounce (fn,delay){
+  let timer;
+  return function(...args)
+  {
+    clearTimeout(timer)
+   timer = setTimeout(()=>{
+      fn.apply(this,args)
+    },delay)
   }
 }
