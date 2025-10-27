@@ -47,12 +47,28 @@
 const input = document.getElementById('input')
 const counttext = document.getElementById('count')
 //add event listener to the input
-function countandShow(e){
+function countandShow(e) {
   let string = new String(e.target.value)
-  if(string.length>=200){
-   alert('Warning: Keep it 200')
+  if (string.length >= 200) {
+    alert('Warning: Keep it 200')
+  }
+  showCount(string.length);
+}
+const throttledFunc = throttle(countandShow,5000)
+input.addEventListener('keyup', throttledFunc)
+//show the count
+function showCount(length) {
+  counttext.innerText = length;
+}
+//write throttle function use that
+
+function throttle(fn, interval) {
+  let lastTtime = 0;
+  return function (...args) {
+    let now = Date.now();
+    if (now - lastTtime >= interval) {
+      lastTtime =now;
+      return fn.apply(this, args)
+    }
   }
 }
-input.addEventListener('keyup',countandShow)
-//show the count
-//write throttle function use that
