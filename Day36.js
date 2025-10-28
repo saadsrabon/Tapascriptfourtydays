@@ -85,3 +85,10 @@ function funcdebounce (fn,delay){
     },delay)
   }
 }
+
+//memoizing
+const memo =(fn)=>{
+  let cache ={}
+  if(resu)
+  const result =fn()
+}
