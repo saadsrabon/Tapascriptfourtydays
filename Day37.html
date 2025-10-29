@@ -1,0 +1,77 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Apis</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script  src="./Day37.js" defer></script>
+</head>
+<body>
+    <div class="h-[400px] border-2 mb-48">
+        <p id="one">First Element</p>
+    </div>
+    <div class="h-[400px] border-2 mb-48">
+        <p  id="two">Second Element</p>
+    </div>
+    <div class="h-[400px] border-2 mb-48">
+        <p id="three">third Element</p>
+    </div>
+
+    <div>
+
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lazy Loading Images</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+    }
+    .image-container {
+      margin: 50px 0;
+    }
+
+    img {
+      width: 100px;
+      height: 200px;
+      display: block;
+      margin: 0 auto;
+      background: #f0f0f0;
+      transition-delay: 0.2s;
+        transition: all 1s ease; /* add this */
+    }
+    #space{
+        height: 800px;
+        margin-bottom: 100px;
+    }
+  </style>
+</head>
+<body>
+    <div id="space"></div>
+
+  <h1>Lazy Loading Images Demo</h1>
+
+  <div class="image-container">
+    <img data-src="https://vondy-images.com/image-proxy?url=https://protoinfrastack.ivondy.com/media/2IH5BW6uYsXcPcTSRBeuYTv1WfD2MgimxWKc.png&water=true" alt="Image 1" />
+  </div>
+  <div class="image-container">
+    <img data-src="https://vondy-images.com/image-proxy?url=https://protoinfrastack.ivondy.com/media/yLmXod1IIg15ELpgNQ23XunuK3nbnEyaXxcz.png&water=true" alt="Image 2" />
+  </div>
+  <div class="image-container">
+    <img data-src="https://vondy-images.com/image-proxy?url=https://protoinfrastack.ivondy.com/media/OG3bgF9GOS4RKOjd52sGvdIPve0KzunDTnQQ.png&water=true" alt="Image 3" />
+  </div>
+  <div class="image-container">
+    <img data-src="https://vondy-images.com/image-proxy?url=https://protoinfrastack.ivondy.com/media/2IH5BW6uYsXcPcTSRBeuYTv1WfD2MgimxWKc.png&water=true" alt="Image 4" />
+  </div>
+
+  <script src="Day37.js"></script>
+</body>
+</html>
