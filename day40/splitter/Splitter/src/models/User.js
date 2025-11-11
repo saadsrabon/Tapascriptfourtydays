@@ -1,4 +1,5 @@
-class User {
+
+export class User {
   constructor(value) {
     if (!value || typeof value !== 'string') {
       throw new Error('User name must be a non-empty string');
@@ -6,7 +7,7 @@ class User {
     this.name = value;
     this.id = this.generateID();
   }
-  generateID() {
+  static generateID() {
     return crypto.randomUUID();
   }
 
